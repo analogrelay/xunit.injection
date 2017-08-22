@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Xunit.Injection</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="XunitInjectingTestCaseRunner.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\vendor\xunit\src\xunit.execution\xunit.execution.csproj" />
+  </ItemGroup>
 
 </Project>

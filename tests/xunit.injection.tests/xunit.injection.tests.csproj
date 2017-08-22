@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\xunit.injection\xunit.injection.csproj" />
+    <ProjectReference Include="..\..\vendor\xunit\src\xunit.assert\xunit.assert.csproj" />
+    <ProjectReference Include="..\..\vendor\xunit\src\xunit.core\xunit.core.csproj" />
+    <ProjectReference Include="..\..\vendor\xunit\src\xunit.execution\xunit.execution.csproj" />
+    <ProjectReference Include="..\..\vendor\xunit\src\xunit.runner.visualstudio\xunit.runner.visualstudio.csproj" />
+  </ItemGroup>
+
+</Project>
