@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>xunit.injection.tests</AssemblyName>
+
+    <RootNamespace>Xunit.Injection.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

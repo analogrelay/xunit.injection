@@ -1,4 +1,4 @@
-namespace xunit.injections.tests
+namespace Xunit.Injection.Tests
 {
     public interface ILoggingService
     {

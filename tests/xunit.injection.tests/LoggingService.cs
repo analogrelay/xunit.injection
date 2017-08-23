@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
 
-namespace xunit.injections.tests
+namespace Xunit.Injection.Tests
 {
     public class LoggingService : ILoggingService
     {
