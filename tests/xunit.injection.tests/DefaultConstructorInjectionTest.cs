@@ -1,8 +1,3 @@
-using System;
-using Xunit;
-
-[assembly: TestFramework("Xunit.Injection.XunitInjectingTestFramework", "xunit.injection")]
-
 namespace Xunit.Injection.Tests
 {
     [DefaultConstructorInjectionController]

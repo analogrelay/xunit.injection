@@ -1,4 +1,6 @@
 using System;
+using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace Xunit.Injection
 {
@@ -8,6 +10,16 @@ namespace Xunit.Injection
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
     public class DefaultXunitInjectionAttribute : Attribute, IXunitInjectionControllerAttribute
     {
-        public IXunitInjectionController CreateInjectionController() => DefaultXunitInjectionController.Instance;
+        public bool TryCreateInjectionControllerForAssembly(ExceptionAggregator aggregator, IReflectionAssemblyInfo assembly, out IXunitInjectionController controller)
+        {
+            controller = DefaultXunitInjectionController.Instance;
+            return true;
+        }
+
+        public bool TryCreateInjectionControllerForType(ExceptionAggregator aggregator, IReflectionTypeInfo type, out IXunitInjectionController controller)
+        {
+            controller = DefaultXunitInjectionController.Instance;
+            return true;
+        }
     }
 }

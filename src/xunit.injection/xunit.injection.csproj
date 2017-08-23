@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\vendor\xunit\src\xunit.execution\xunit.execution.csproj" />
+    <PackageReference Include="xunit.extensibility.execution" Version="2.2.0" />
   </ItemGroup>
 
 </Project>

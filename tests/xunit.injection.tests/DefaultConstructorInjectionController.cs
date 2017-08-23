@@ -9,9 +9,16 @@ namespace Xunit.Injection.Tests
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
     public sealed class DefaultConstructorInjectionControllerAttribute : Attribute, IXunitInjectionControllerAttribute
     {
-        public IXunitInjectionController CreateInjectionController()
+        public bool TryCreateInjectionControllerForAssembly(ExceptionAggregator aggregator, IReflectionAssemblyInfo assembly, out IXunitInjectionController controller)
         {
-            return new DefaultConstructorInjectionController();
+            controller = new DefaultConstructorInjectionController();
+            return true;
+        }
+
+        public bool TryCreateInjectionControllerForType(ExceptionAggregator aggregator, IReflectionTypeInfo type, out IXunitInjectionController controller)
+        {
+            controller = new DefaultConstructorInjectionController();
+            return true;
         }
     }
 

@@ -1,3 +1,0 @@
-[submodule "vendor/xunit"]
-	path = vendor/xunit
-	url = git@github.com:anurse/xunit.git

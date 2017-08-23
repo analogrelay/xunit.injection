@@ -44,14 +44,14 @@ namespace Xunit.Injection
         protected virtual IXunitInjectionController CreateInjectionController()
         {
             // Check the class and assembly for an IXunitInjectionControllerAttribute
-            if (TryCreateController(Class.Type.GetCustomAttributes(), out var controller))
+            if (TryCreateController(Class.Type.GetCustomAttributes(), assembly: null, type: Class, controller: out var controller))
             {
                 return controller;
             }
 
             if (Class.Assembly is IReflectionAssemblyInfo reflectionAssembly)
             {
-                if (TryCreateController(reflectionAssembly.Assembly.GetCustomAttributes(), out controller))
+                if (TryCreateController(reflectionAssembly.Assembly.GetCustomAttributes(), assembly: reflectionAssembly, type: null, controller: out controller))
                 {
                     return controller;
                 }
@@ -60,14 +60,20 @@ namespace Xunit.Injection
             return DefaultXunitInjectionController.Instance;
         }
 
-        private bool TryCreateController(IEnumerable<Attribute> attributes, out IXunitInjectionController controller)
+        private bool TryCreateController(IEnumerable<Attribute> attributes, IReflectionAssemblyInfo assembly, IReflectionTypeInfo type, out IXunitInjectionController controller)
         {
             foreach (var attribute in attributes)
             {
                 if (attribute is IXunitInjectionControllerAttribute controllerAttribute)
                 {
-                    controller = controllerAttribute.CreateInjectionController();
-                    return true;
+                    if (assembly != null)
+                    {
+                        return controllerAttribute.TryCreateInjectionControllerForAssembly(Aggregator, assembly, out controller);
+                    }
+                    else
+                    {
+                        return controllerAttribute.TryCreateInjectionControllerForType(Aggregator, type, out controller);
+                    }
                 }
             }
             controller = null;
